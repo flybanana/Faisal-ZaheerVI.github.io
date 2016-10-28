@@ -32,11 +32,11 @@
     <p class="subtitle">by ZAHR VI</p>
     
     <center>
-    <a href="#" onclick="doTurn('rock');">Choose Rock
+    <a href="#" onclick="doTurn('rock');">
         <img src="http://www.clipartkid.com/images/122/mr-rock-clip-art-at-clker-com-vector-clip-art-online-royalty-free-XJzfcw-clipart.png" width="200" length="200"/></a>
-    <a href="#" onclick="doTurn('paper');">Choose Paper
+    <a href="#" onclick="doTurn('paper');">
         <img src="https://cdn1.iconfinder.com/data/icons/pretty-office-10/512/Test-paper-512.png" width="200" length="200"/></a>
-    <a href="#" onclick="doTurn('scissors');">Choose Scissors 
+    <a href="#" onclick="doTurn('scissors');">
         <img src="http://www.clipartkid.com/images/122/glue-pencils-clipart-cliparthut-free-clipart-lxRHNk-clipart.gif" width="200" length="200"/></a>
     <br>
     <br>
@@ -62,6 +62,9 @@
       var choice1 = "rock";
       var choice2 = "paper";
       var choice3 = "scissors";
+        
+      // string array to hold possible choices
+      var choices = [ "rock", "paper", "scissors" ];
 
       // number variables to hold the scores
       var humanScore = 0;
@@ -74,12 +77,28 @@
       // variable to hold our output
       var output = "";
             
+      // returns a random computer choice
+      function getComputerChoice(hc) {
+      /*    if (hc === "rock") {
+            return "paper";
+          }
+          else if (hc === "paper") {
+            return "scissors";
+          }
+          else {
+            return "rock";
+          }*/
+          return choices[Math.floor(Math.random() * choices.length)];
+      }
+        
       function doTurn(humanChoice) {
-         computerChoice = "rock"; // try changing these values to test!
+         
+         computerChoice = getComputerChoice(humanChoice); // try changing these values to test!
          
          if (humanChoice === computerChoice) { // Draw
             console.log("Draw!");
             output = "Draw!";
+            output = "You both picked " + humanChoice + ".  Draw!";
          }
          else if ((humanChoice === "rock" && computerChoice === "scissors") ||
                  (humanChoice === "scissors" && computerChoice === "paper") ||
@@ -87,6 +106,7 @@
                  // Human won
             console.log("You win!"); 
             output = "You win!";
+            output = "Your " + humanChoice + " beats computer's " + computerChoice;
             humanScore++; // same as: humanScore = humanScore + 1;
                           // same as: humanScore += 1;
          }
@@ -94,10 +114,26 @@
             console.log("You lose!");
             output = "You lose!";
             computerScore++;
+             output = "Your " + humanChoice + " lost to computer's " + computerChoice;
          }
+          
+         // Use the += operator to add more HTML to the "output" string
+         output += "<br>Human score: " + humanScore
+                 + "<br>Computer score: " + computerScore;
+          
+         if (humanScore >= 10) {
+           humanScore = 0;
+           computerScore = 0;
+           output += "<br>You win!";
+         }
+         else if (computerScore >= 10) {
+           humanScore = 0;
+           computerScore = 0;
+           output += "<br>You lose!";
+         } 
          
-         output += "<br> You " + humanScore;
-         output += "<br> Computer " + computerScore;
+         // output += "<br> You " + humanScore;
+         // output += "<br> Computer " + computerScore;
          
          // Write the output string to the div element "output"
          document.getElementById("output").innerHTML = output;
