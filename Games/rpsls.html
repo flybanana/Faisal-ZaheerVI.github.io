@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Rock, paper, scissors, lizard, spock</title>
+      <link href="https://fonts.googleapis.com/css?family=PT+Sans|Questrial" rel="stylesheet">
+    <style>        
+        body {
+            background-image: url("https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ-3no8SRabEq-oR1F34lu-8PlHwAutWiBN56ehaaQe30eCrBe2");
+            background-size: cover;
+        }
+        
+        .title {
+            font-weight: bold;
+            font-family: "PT Sans";
+            text-align: center;
+            font-size: 50px;
+        }
+        
+        .subtitle {
+            font-family: serif;
+            text-align: center;
+            font-size: 20px;
+        }
+        
+        .result {
+            font-family: "Questrial";
+            font-size: 50px;
+        }
+        
+        
+    </style>
+  </head>
+  <body>
+    
+    <!-- Cap - Rock, Iron - Scissors, Hulk - paper -->
+    <!-- start body-->
+    
+    <p class="title">Rock, Paper, Scissors, Lizard, Spock</p>
+      <p class="subtitle"><b>Objective:</b> Choose one of the following options and beat The Computer!</p><br>
+    
+    <center>
+    <a href="#" onclick="doTurn('rock');">
+        <img src="imgs/rock.png" width="200" length="200"/></a>
+    <a href="#" onclick="doTurn('paper');">
+        <img src="imgs/paper.png" width="200" length="200"/></a>
+    <a href="#" onclick="doTurn('scissors');">
+        <img src="imgs/scissors.png" width="200" length="200"/></a>
+    <a href="#" onclick="doTurn('lizard');">
+        <img src="imgs/lizard.png" width="200" length="200"/></a>
+    <a href="#" onclick="doTurn('spock');">
+        <img src="imgs/spock.png" width="210" length="210"/></a>
+    <br>
+    <br>
+      
+    <div id="output" class="result">      </div>
+        
+    </center>
+
+    <!--end body -->
+
+    <script src="rpsls.js"></script>
+    
+  </body>
+</html>
