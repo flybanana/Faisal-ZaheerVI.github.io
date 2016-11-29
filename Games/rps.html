@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Rock, paper, scissors</title>
+      
+    <style>
+        .title {
+            font-weight: bold;
+            font-family: fantasy;
+            text-align: center;
+            font-size: 40px;
+        }
+        
+        .subtitle {
+            font-family: serif;
+            text-align: center;
+            font-size: 20px;
+        }
+        
+        .result {
+            font-family: cursive;
+            font-size: 50px;
+        }
+    </style>
+  </head>
+  <body>
+    
+    <!-- Cap - Rock, Iron - Scissors, Hulk - paper -->
+    <!-- start body-->
+    
+    <p class="title">Rock, Paper, Scissors</p>
+    <p class="subtitle">by ZAHR VI</p>
+    
+    <center>
+    <a href="#" onclick="doTurn('rock');">
+        <img src="http://www.clipartkid.com/images/122/mr-rock-clip-art-at-clker-com-vector-clip-art-online-royalty-free-XJzfcw-clipart.png" width="200" length="200"/></a>
+    <a href="#" onclick="doTurn('paper');">
+        <img src="https://cdn1.iconfinder.com/data/icons/pretty-office-10/512/Test-paper-512.png" width="200" length="200"/></a>
+    <a href="#" onclick="doTurn('scissors');">
+        <img src="http://www.clipartkid.com/images/122/glue-pencils-clipart-cliparthut-free-clipart-lxRHNk-clipart.gif" width="200" length="200"/></a>
+    <br>
+    <br>
+      
+    <div id="output" class="result">      </div>
+        
+    </center>
+
+    <!--end body -->
+    <script src="rps.js"></script>
+    
+  </body>
+</html>
