@@ -53,14 +53,18 @@ game.start(); // canvas not created until this function is called
 // Constants
 var ROCK_BOTTOM = game.canvas.height;
 var GRID_SIZE = 10;
-var PLATFORM_HEIGHT = 10;
-var PLATFORM_WIDTH = 100;
+//var PLATFORM_HEIGHT = 10;
+var MAX_PLAT_HEIGHT = 12;
+var MIN_PLAT_HEIGHT = 12;
+var MAX_PLAT_WIDTH = 75;
+var MIN_PLAT_WIDTH = 125;
+//var PLATFORM_WIDTH = 100;
 var PLATFORM_SPEED = 3;
 var INIT_X = game.canvas.width;
 var INIT_Y = game.canvas.height - PLATFORM_HEIGHT;
 //var PLAYER_IMG = "imgs/download.png"
 
-//var NUM_PLATFORMS = 3;
+var NUM_PLATFORMS = 3;
 
 // Global variables
 var player;
@@ -88,13 +92,13 @@ var Platform = function (x, y, height, width, color) {
             makeNewPlatform();
         }
         
-        if (platform2.x + platform2.width < 0) {
+        /*if (platform2.x + platform2.width < 0) {
             makeNewPlatformTwo();
         }
         
         if (platform3.x + platform3.width < 0) {
             makeNewPlatformThree();
-        }
+        }*/
         
         else this.x += this.dx;
 
@@ -115,9 +119,9 @@ function startGame() {
     // width, height, color, x, y
     player = new Player(30, 30, "red", 10, 120);
     
-    makeNewPlatform();
-    makeNewPlatformTwo();
-    makeNewPlatformThree();
+    for (var i = 0; i < NUM_PLATFORMS; i++) {
+		platforms.push(makeNewPlatform);
+	}
     
     // debug:
     //console.log(game.canvas.width + " " + game.canvas.height);
@@ -130,7 +134,7 @@ function makeNewPlatform (height) {
     platform1 = new Platform(INIT_X, INIT_Y, PLATFORM_HEIGHT, PLATFORM_WIDTH, "green");
 };
 
-function makeNewPlatformTwo (height) {
+/*function makeNewPlatformTwo (height) {
     // x, y, height, width, color
     platform2 = new Platform(INIT_X + 230, INIT_Y - 50, PLATFORM_HEIGHT, PLATFORM_WIDTH, "brown");
 };
@@ -138,7 +142,7 @@ function makeNewPlatformTwo (height) {
 function makeNewPlatformThree (height) {
     // x, y, height, width, color
     platform3 = new Platform(INIT_X + 430, INIT_Y, PLATFORM_HEIGHT, PLATFORM_WIDTH, "blue");
-};
+};*/
 
 // Player class
 function Player(width, height, color, x, y) {
@@ -201,12 +205,14 @@ function Player(width, height, color, x, y) {
         
         // check for platform contact
         if (this.x >= platform1.x - this.width
-            && this.x <= platform1.x + platform1.width) {
+            && this.x <= platform1.x + platform1.width
+		   	&& this.y >= platform1.y - this.height
+		   	&& this.y <= platform1.y) {
             this.y = platform1.y - this.height;
             this.landed = true;
         }
         
-        if (this.x >= platform2.x - this.width
+        /*if (this.x >= platform2.x - this.width
             && this.x <= platform2.x + platform2.width) {
             this.y = platform2.y - this.height;
             this.landed = true;
@@ -216,7 +222,7 @@ function Player(width, height, color, x, y) {
             && this.x <= platform3.x + platform3.width) {
             this.y = platform3.y - this.height;
             this.landed = true;
-        }
+        } */
         
         // check for colliding with bottom of screen
         else if (this.y >= game.canvas.height - this.height) {
@@ -265,12 +271,16 @@ function updateGameArea() {
     // Move stuff
     player.move();
     platform1.move();
-    platform2.move();
-    platform3.move();
+    //platform2.move();
+    //platform3.move();
 
     // Draw images
     player.update();
     platform1.update();
-    platform2.update();
-    platform3.update();
+    //platform2.update();
+    //platform3.update();
 }
+
+//function rand(lo, hi) {
+//    return Math.floor(Math.random() * (hi - lo)) + lo;
+//}
