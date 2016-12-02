@@ -53,24 +53,25 @@ game.start(); // canvas not created until this function is called
 // Constants
 var ROCK_BOTTOM = game.canvas.height;
 var GRID_SIZE = 10;
+
 var PLATFORM_HEIGHT = 10;
-var MAX_PLAT_HEIGHT = 12;
-var MIN_PLAT_HEIGHT = 12;
+var MAX_PLAT_HEIGHT = 0;
+var MIN_PLAT_HEIGHT = game.canvas.height - PLATFORM_HEIGHT;
+
 var MAX_PLAT_WIDTH = 75;
 var MIN_PLAT_WIDTH = 125;
 var PLATFORM_WIDTH = 100;
+
 var PLATFORM_SPEED = 3;
+
 var INIT_X = game.canvas.width;
 var INIT_Y = game.canvas.height - PLATFORM_HEIGHT;
 //var PLAYER_IMG = "imgs/download.png"
 
-var NUM_PLATFORMS = 3;
+var NUM_PLATFORMS = 1;
 
 // Global variables
 var player;
-var platform1;
-var platform2;
-var platform3;
 var platforms = [];
 var count;
 
@@ -95,8 +96,28 @@ var Platform = function (x, y, height, width, color) {
     
         // Check if platform crossed left side of screen
         if (this.x + this.width < 0) {
-            makeNewPlatform();
+            // Find the index of this platform
+            var index = platforms.indexOf(this);
+            
+            // Check for index out of bounds
+            if (index > -1) {
+                
+                // Remove this object from platforms array
+                platforms.splice(index, 1);
+                
+                // Push (add) a new platform to the bldgs array
+                platforms.push(makeNewPlatform());
+            }
         }
+		
+		// Check if platform crossed middle of screen
+		else if (this.x + this.width <= game.canvas.width / 2 &&
+				this.x + this.width >= game.canvas.width / 2 - 2 &&
+				platforms.length <= 2) {
+			// Push (add) a new platform to the bldgs array
+                 this.x += this.dx;
+				 platforms.push(makeNewPlatform());
+		}
         
         else this.x += this.dx;
 
@@ -126,7 +147,8 @@ function startGame() {
 // generates a new Platform
 function makeNewPlatform (height) {
     // x, y, height, width, color
-    return new Platform(INIT_X, INIT_Y, PLATFORM_HEIGHT, PLATFORM_WIDTH, "green");
+	var height = rand(MIN_PLAT_HEIGHT, MAX_PLAT_HEIGHT);
+    return new Platform(INIT_X, height, PLATFORM_HEIGHT, PLATFORM_WIDTH, "green");
 };
 
 // Player class
@@ -207,30 +229,7 @@ function Player(width, height, color, x, y) {
 }
 
 // Called multiple times
-function updateGameArea() {
-    /*
-    var x, y;
-    
-    for (i = 0; i < platforms.length; i += 1) {
-        if (player.crashWith(platform1[i])) {
-            game.stop();
-            return;
-        } 
-    }
-    game.clear();
-    game.frameNo += 1;
-    if (game.frameNo == 1 || everyinterval(150)) {
-        x = game.canvas.width;
-        y = game.canvas.height - 200
-        //todo
-        //platform1.push(new Player(10, 200, "green", x, y));
-    }
-    for (i = 0; i < platforms.length; i++) {
-        platform1[i].x += -1;
-        platform1[i].update();
-    }
-    */
-    
+function updateGameArea() {    
 
     // Clears screen of previous frames
     game.clear();
@@ -240,16 +239,20 @@ function updateGameArea() {
 
     // Move stuff
     player.move();
-    platforms[0].move();
     
+	for (var i = 0; i < platforms.length; i++) {
+        platforms[i].move();
+	}
+
     // Draw images
     player.update();
-	
-	
-	
-    platforms[0].update();
+
+	for (var i = 0; i < platforms.length; i++) {
+        platforms[i].update();
+	}
 }
 
-//function rand(lo, hi) {
-//    return Math.floor(Math.random() * (hi - lo)) + lo;
-//}
+// Generates a random integer between two bounds
+function rand(lo, hi) {
+    return Math.floor(Math.random() * (hi - lo)) + lo;
+}
