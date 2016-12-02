@@ -53,17 +53,13 @@ game.start(); // canvas not created until this function is called
 // Constants
 var ROCK_BOTTOM = game.canvas.height;
 var GRID_SIZE = 10;
-
 var PLATFORM_HEIGHT = 10;
 var MAX_PLAT_HEIGHT = 12;
 var MIN_PLAT_HEIGHT = 12;
-
 var MAX_PLAT_WIDTH = 75;
 var MIN_PLAT_WIDTH = 125;
 var PLATFORM_WIDTH = 100;
-
 var PLATFORM_SPEED = 3;
-
 var INIT_X = game.canvas.width;
 var INIT_Y = game.canvas.height - PLATFORM_HEIGHT;
 //var PLAYER_IMG = "imgs/download.png"
@@ -98,30 +94,9 @@ var Platform = function (x, y, height, width, color) {
     this.move = function () {
     
         // Check if platform crossed left side of screen
-        if (platform1.x + platform1.width < 0) {
-            //makeNewPlatform();
-			
-			// Find the index of this building
-            var index = platforms.indexOf(this);
-            
-            // Check for index out of bounds
-            if (index > -1) {
-                
-                // Remove this object from bldgs array
-                platforms.splice(index, 1);
-                
-                // Push (add) a new building to the bldgs array
-                platforms.push(makeNewPlatform());
-            }
+        if (this.x + this.width < 0) {
+            makeNewPlatform();
         }
-        
-        /*if (platform2.x + platform2.width < 0) {
-            makeNewPlatformTwo();
-        }
-        
-        if (platform3.x + platform3.width < 0) {
-            makeNewPlatformThree();
-        }*/
         
         else this.x += this.dx;
 
@@ -139,39 +114,20 @@ var Platform = function (x, y, height, width, color) {
 // initializes a new game
 function startGame() {
 
-	// Creates platform
-    for (var i = 0; i < NUM_PLATFORMS; i++) {
-        platforms.push(makeNewPlatform());
-    }
-	
     // width, height, color, x, y
     player = new Player(30, 30, "red", 10, 120);
     
-    /*for (var i = 0; i < NUM_PLATFORMS; i++) {
-		platforms.push(makeNewPlatform);
-	}*/
-	
-	makeNewPlatform();
-    
-    // debug:
-    //console.log(game.canvas.width + " " + game.canvas.height);
-    //console.log(platform1);
+	// Populate platforms array
+    for (var i = 0; i < NUM_PLATFORMS; i++) {
+		platforms.push(makeNewPlatform());
+	}
 }
 
 // generates a new Platform
 function makeNewPlatform (height) {
     // x, y, height, width, color
-    platform1 = new Platform(INIT_X, INIT_Y, PLATFORM_HEIGHT, PLATFORM_WIDTH, "green");
+    return new Platform(INIT_X, INIT_Y, PLATFORM_HEIGHT, PLATFORM_WIDTH, "green");
 };
-
-/*function makeNewPlatformTwo (height) {
-    // x, y, height, width, color
-    platform2 = new Platform(INIT_X + 230, INIT_Y - 50, PLATFORM_HEIGHT, PLATFORM_WIDTH, "brown");
-};
-function makeNewPlatformThree (height) {
-    // x, y, height, width, color
-    platform3 = new Platform(INIT_X + 430, INIT_Y, PLATFORM_HEIGHT, PLATFORM_WIDTH, "blue");
-};*/
 
 // Player class
 function Player(width, height, color, x, y) {
@@ -227,34 +183,19 @@ function Player(width, height, color, x, y) {
     // Checks collisions between player and ground/platforms
     this.collisionDetect = function() {
         
-        // this.x >= platform1.x - this.width
-        // this.x <= platform1.x + platform1.width
-        // this.x + this.width >= platform1.x
-        // this.x + this.width <= platform1.x + this.width
-        
-        // check for platform contact
-        if (this.x >= platform1.x - this.width
-            && this.x <= platform1.x + platform1.width
-		   	&& this.y >= platform1.y - this.height
-		   	&& this.y <= platform1.y) {
-            this.y = platform1.y - this.height;
-            this.landed = true;
-        }
-        
-        /*if (this.x >= platform2.x - this.width
-            && this.x <= platform2.x + platform2.width) {
-            this.y = platform2.y - this.height;
-            this.landed = true;
-        }
-        
-        if (this.x >= platform3.x - this.width
-            && this.x <= platform3.x + platform3.width) {
-            this.y = platform3.y - this.height;
-            this.landed = true;
-        } */
+		for (var i = 0; i < platforms.length; i++) {
+			// check for platform contact
+			if (this.x >= platforms[i].x - this.width
+				&& this.x <= platforms[i].x + platforms[i].width
+				&& this.y >= platforms[i].y - this.height
+				&& this.y <= platforms[i].y) {
+				this.y = platforms[i].y - this.height;
+				this.landed = true;
+			}			
+		}
         
         // check for colliding with bottom of screen
-        else if (this.y >= game.canvas.height - this.height) {
+        if (this.y >= game.canvas.height - this.height) {
             this.y = game.canvas.height - this.height;
             this.landed = true;
         }
@@ -299,15 +240,14 @@ function updateGameArea() {
 
     // Move stuff
     player.move();
-    platform1.move();
-    //platform2.move();
-    //platform3.move();
-
+    platforms[0].move();
+    
     // Draw images
     player.update();
-    platform1.update();
-    //platform2.update();
-    //platform3.update();
+	
+	
+	
+    platforms[0].update();
 }
 
 //function rand(lo, hi) {
