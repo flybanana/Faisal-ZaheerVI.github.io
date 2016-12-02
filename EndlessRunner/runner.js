@@ -53,12 +53,12 @@ game.start(); // canvas not created until this function is called
 // Constants
 var ROCK_BOTTOM = game.canvas.height;
 var GRID_SIZE = 10;
-//var PLATFORM_HEIGHT = 10;
+var PLATFORM_HEIGHT = 10;
 var MAX_PLAT_HEIGHT = 12;
 var MIN_PLAT_HEIGHT = 12;
 var MAX_PLAT_WIDTH = 75;
 var MIN_PLAT_WIDTH = 125;
-//var PLATFORM_WIDTH = 100;
+var PLATFORM_WIDTH = 100;
 var PLATFORM_SPEED = 3;
 var INIT_X = game.canvas.width;
 var INIT_Y = game.canvas.height - PLATFORM_HEIGHT;
@@ -119,9 +119,11 @@ function startGame() {
     // width, height, color, x, y
     player = new Player(30, 30, "red", 10, 120);
     
-    for (var i = 0; i < NUM_PLATFORMS; i++) {
+    /*for (var i = 0; i < NUM_PLATFORMS; i++) {
 		platforms.push(makeNewPlatform);
-	}
+	}*/
+	
+	makeNewPlatform();
     
     // debug:
     //console.log(game.canvas.width + " " + game.canvas.height);
@@ -138,7 +140,6 @@ function makeNewPlatform (height) {
     // x, y, height, width, color
     platform2 = new Platform(INIT_X + 230, INIT_Y - 50, PLATFORM_HEIGHT, PLATFORM_WIDTH, "brown");
 };
-
 function makeNewPlatformThree (height) {
     // x, y, height, width, color
     platform3 = new Platform(INIT_X + 430, INIT_Y, PLATFORM_HEIGHT, PLATFORM_WIDTH, "blue");
