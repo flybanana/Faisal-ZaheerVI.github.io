@@ -53,13 +53,17 @@ game.start(); // canvas not created until this function is called
 // Constants
 var ROCK_BOTTOM = game.canvas.height;
 var GRID_SIZE = 10;
+
 var PLATFORM_HEIGHT = 10;
 var MAX_PLAT_HEIGHT = 12;
 var MIN_PLAT_HEIGHT = 12;
+
 var MAX_PLAT_WIDTH = 75;
 var MIN_PLAT_WIDTH = 125;
 var PLATFORM_WIDTH = 100;
+
 var PLATFORM_SPEED = 3;
+
 var INIT_X = game.canvas.width;
 var INIT_Y = game.canvas.height - PLATFORM_HEIGHT;
 //var PLAYER_IMG = "imgs/download.png"
@@ -73,6 +77,12 @@ var platform2;
 var platform3;
 var platforms = [];
 var count;
+
+// load images
+var playerImg = new Image();
+var platformImg = new Image();
+playerImg.src = "";
+platformImg.src = "";
 
 // Platform class
 var Platform = function (x, y, height, width, color) {   
@@ -89,7 +99,20 @@ var Platform = function (x, y, height, width, color) {
     
         // Check if platform crossed left side of screen
         if (platform1.x + platform1.width < 0) {
-            makeNewPlatform();
+            //makeNewPlatform();
+			
+			// Find the index of this building
+            var index = platforms.indexOf(this);
+            
+            // Check for index out of bounds
+            if (index > -1) {
+                
+                // Remove this object from bldgs array
+                platforms.splice(index, 1);
+                
+                // Push (add) a new building to the bldgs array
+                platforms.push(makeNewPlatform());
+            }
         }
         
         /*if (platform2.x + platform2.width < 0) {
@@ -116,6 +139,11 @@ var Platform = function (x, y, height, width, color) {
 // initializes a new game
 function startGame() {
 
+	// Creates platform
+    for (var i = 0; i < NUM_PLATFORMS; i++) {
+        platforms.push(makeNewPlatform());
+    }
+	
     // width, height, color, x, y
     player = new Player(30, 30, "red", 10, 120);
     
