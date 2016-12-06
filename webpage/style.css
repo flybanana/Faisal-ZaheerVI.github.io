@@ -1,0 +1,57 @@
+body {
+  background-image: url('https://www.walldevil.com/wallpapers/a11/background-backgrounds-abstract-advertisements-presentations-web-blue.jpg');
+  background-size: fill;
+}
+
+#title {
+  color: black;
+  font-family: comic sans ms;
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+
+#green {
+  color: green;
+  font-size: 100px;
+  text-align: center;
+}
+
+.bodytext { 
+  /*border: 1px solid black; */
+  padding: 20px;
+  /* margin-left: 60px; */
+  /* background-color: #cccccc;
+  width: 50%;  */
+}
+
+.bold {
+  font-weight: 900;
+}
+
+h2 {
+  /* font...  */
+}
+
+.secgap {
+  margin-top: 15px;
+}
+
+.sectitle {
+  font-family: Verdana;
+  font-size: 250%;
+  font-weight: 900;
+}
+
+.subsec {
+  font-size: 130%;
+  font-family: Arial;
+  font-weight: 500;
+}
+
+.image {
+  display: block;
+  margin: auto;
+  border-style: double;
+  border-width: 5px;
+}
