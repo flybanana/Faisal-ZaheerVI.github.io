@@ -1,14 +1,21 @@
 body {
-  background-image: url('https://www.walldevil.com/wallpapers/a11/background-backgrounds-abstract-advertisements-presentations-web-blue.jpg');
+  background-image: url('http://zellox.com/wp-content/uploads/2016/04/website-background-images-%E2%80%AB309218135%E2%80%AC-%E2%80%AB%E2%80%AC.jpg');
   background-size: fill;
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  width: 70%;
+  margin: auto;
 }
 
 #title {
   color: black;
-  font-family: comic sans ms;
-  font-size: 30px;
+  font-family: font-family: 'Acme', sans-serif;
+  font-size: 50px;
   text-align: center;
   font-weight: bold;
+  font-variant-caps:small-caps
 }
 
 #green {
@@ -34,19 +41,25 @@ h2 {
 }
 
 .secgap {
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .sectitle {
   font-family: Verdana;
   font-size: 250%;
   font-weight: 900;
+  text-align: center;
 }
 
 .subsec {
   font-size: 130%;
   font-family: Arial;
   font-weight: 500;
+  padding-left: 25px;
+}
+
+.subtext {
+  padding-left: 25px;
 }
 
 .image {
