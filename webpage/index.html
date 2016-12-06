@@ -1,81 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Bootstrap Case</title>
+    <title>Home</title>
 
     <meta charset="utf-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+    
     <link rel="stylesheet" href="style.css">
+    
+    <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+    <!-- font-family: 'Acme', sans-serif; -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <style>
-
-      body {
-        background-image: url('https://www.walldevil.com/wallpapers/a11/background-backgrounds-abstract-advertisements-presentations-web-blue.jpg');
-        background-size: fill;
-      }
-
-      #title {
-        color: black;
-        font-family: comic sans ms;
-        font-size: 30px;
-        text-align: center;
-        font-weight: bold;
-      }
-
-      #green {
-        color: green;
-        font-size: 100px;
-        text-align: center;
-      }
-
-      .bodytext { 
-        /*border: 1px solid black; */
-        padding: 20px;
-        /* margin-left: 60px; */
-        /* background-color: #cccccc;
-        width: 50%;  */
-      }
-
-      .bold {
-        font-weight: 900;
-      }
-
-      h2 {
-        /* font...  */
-      }
-
-      .secgap {
-        margin-top: 15px;
-      }
-
-      .sectitle {
-        font-family: Verdana;
-        font-size: 250%;
-        font-weight: 900;
-      }
-
-      .subsec {
-        font-size: 130%;
-        font-family: Arial;
-        font-weight: 500;
-      }
-
-      .image {
-		display: block;
-		margin: auto;
-        border-style: double;
-        border-width: 5px;
-      }
-
-    </style>
 
   </head>
   <body>
@@ -88,8 +29,8 @@
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#">Background</a></li>
-	<li><a href="https://faisal-zaheervi.github.io/webpage/education.html">Education</a></li>
-		  <li><a href="#">Career</a></li>
+          <li><a href="https://faisal-zaheervi.github.io/webpage/education.html">Education</a></li>
+          <li><a href="#">Career</a></li>
           <li><a href="#">Portfolio</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
@@ -97,16 +38,60 @@
       </div>
     </nav>
 
-    <!--<h1 id="title">Hi, I'm </h1>
-<h1 id="green">Faisal!</h1>-->
-
+    <h1 id="title">Faisal Zaheer</h1>
+    
     <div class="container">
-      <p style="color:black;font-family:verdana;font-size:120%;text-align:center;">
-        Computer Lover, Video Gamer, and a nut for Superheroes.</p>
+      <p>Computer Lover, Video Gamer, and a nut for Superheroes.</p>
       <!--<img src="me.jpg" class="image-circle">-->
     </div>
     <div class="container" style="center">           
       <img src="me.jpg" class="img-circle image" alt="Cinque Terre" width="280" height="320">
+    </div>
+    
+    <p class="subtext">
+      As a Computer Hardware Engineer, I would    research, design, develop, and test computer systems and components, discovering new directions in hardware for computers, leading to rapid advances in the field of computer technology.
+    </p>
+    
+    <div class="container">
+      <br>
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+          <li data-target="#myCarousel" data-slide-to="3"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <img src="http://1.bp.blogspot.com/-fx7dQJLPXx0/VYETAPQZVYI/AAAAAAAAFQc/ZCFLsHbNvT4/s1920/DaredevilCharlie%2BCoxPromoArtByDCDesigns.png" alt="Chania" width="460" height="345">
+          </div>
+
+          <div class="item">
+            <img src="https://fanart.tv/fanart/tv/284190/showbackground/marvels-aka-jessica-jones-5663258155626.jpg" alt="Chania" width="460" height="345">
+          </div>
+
+          <div class="item">
+            <img src="https://i.ytimg.com/vi/snJ-nRgx8o0/maxresdefault.jpg" alt="Flower" width="460" height="345">
+          </div>
+
+          <div class="item">
+            <img src="http://gamerssphere.com/wp-content/uploads/2016/10/IronFist_Logo.png" alt="Flower" width="460" height="345">
+          </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
     </div>
 
   </body>
