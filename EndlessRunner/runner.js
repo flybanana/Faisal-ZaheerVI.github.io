@@ -3,6 +3,14 @@
  * - myGamePiece = player
  */
 
+// Background image
+var bgReady = false;
+var bgImage = new Image();
+bgImage.onload = function () {
+	bgReady = true;
+};
+bgImage.src = "imgs/backdrop.png";
+
 // Creates Game Canvas with properties
 var game = {
     canvas : document.createElement("canvas"),
@@ -13,6 +21,9 @@ var game = {
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         //this.frameNo = 0;
         this.interval = setInterval(updateGameArea, 20);
+		if (bgReady) {
+		ctx.drawImage(bgImage, 0, 0);
+	}
     },
     
     // Clears canvas
@@ -76,9 +87,9 @@ var platforms = [];
 var count;
 
 // load images
-var playerImg = new Image();
+var img = new Image();
 var platformImg = new Image();
-playerImg.src = "";
+img.src = "imgs/Batman.png";
 platformImg.src = "";
 
 // Platform class
@@ -134,7 +145,7 @@ var Platform = function (x, y, height, width, color) {
 
 // initializes a new game
 function startGame() {
-
+	
     // width, height, color, x, y
     player = new Player(30, 30, "red", 10, 120);
     
@@ -213,6 +224,7 @@ function Player(width, height, color, x, y) {
 				&& this.y <= platforms[i].y) {
 				this.y = platforms[i].y - this.height;
 				this.landed = true;
+				
 			}			
 		}
         
