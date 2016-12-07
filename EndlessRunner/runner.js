@@ -151,7 +151,7 @@ var Platform = function (x, y, height, width, color) {
 function startGame() {
 	
     // width, height, color, x, y
-    player = new Player(30, 30, "red", 10, 120);
+    player = new Player(30, 30, "red", 50, 120);
     
 	// Populate platforms array
     for (var i = 0; i < NUM_PLATFORMS; i++) {
@@ -268,7 +268,7 @@ function updateGameArea() {
     game.clear();
     
     // Handle collision detection
-    player.collisionDetect();
+    //player.collisionDetect();
 
     // Move stuff
     player.move();
