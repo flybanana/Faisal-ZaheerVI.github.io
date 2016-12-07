@@ -21,14 +21,15 @@ var game = {
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         //this.frameNo = 0;
         this.interval = setInterval(updateGameArea, 20);
-		if (bgReady) {
+		/*if (bgReady) {
 		ctx.drawImage(bgImage, 0, 0);
-	}
+		}*/
     },
     
     // Clears canvas
     clear : function () {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+		this.context.drawImage(bgImage, 0, 0, this.canvas.width, this.canvas.height)
     }
 }; // end Game object
 
@@ -90,9 +91,9 @@ var platforms = [];
 var count;
 
 // load images
-var img = new Image();
+var playerImg = new Image();
 var platformImg = new Image();
-img.src = "imgs/Batman.png";
+playerImg.src = "imgs/Batman.png";
 platformImg.src = "";
 
 // Platform class
@@ -161,8 +162,8 @@ function startGame() {
 // generates a new Platform
 function makeNewPlatform (height) {
     // x, y, height, width, color
-	var height = rand(MIN_PLAT_Y, MAX_PLAT_Y);
-    return new Platform(INIT_X, height, PLATFORM_HEIGHT, PLATFORM_WIDTH, "green");
+	var PLAT_Y = rand(MIN_PLAT_Y, MAX_PLAT_Y);
+    return new Platform(INIT_X, PLAT_Y, PLATFORM_HEIGHT, PLATFORM_WIDTH, "green");
 };
 
 // Player class
@@ -181,8 +182,8 @@ function Player(width, height, color, x, y) {
     // Draw the player to screen
     this.update = function() {
         ctx = game.context;
-        ctx.fillStyle = color;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.drawImage(playerImg, this.x, this.y, this.width, this.height)
+        //ctx.fillRect(this.x, this.y, this.width, this.height);
     }
     
     // Repositions the player for this frame
@@ -229,7 +230,6 @@ function Player(width, height, color, x, y) {
 				&& this.y <= platforms[i].y) {
 				this.y = platforms[i].y - this.height;
 				this.landed = true;
-				
 			}			
 		}
         
