@@ -215,6 +215,8 @@ function Player(width, height, color, x, y) {
     
     // Checks collisions between player and ground/platforms
     this.collisionDetect = function() {
+		
+		this.landed = false;
         
 		for (var i = 0; i < platforms.length; i++) {
 			// check for platform contact
@@ -234,9 +236,9 @@ function Player(width, height, color, x, y) {
             this.landed = true;
         }
         
-        else {
+        /*else {
             this.landed = false;
-        }
+        }*/
     }
 }
 
