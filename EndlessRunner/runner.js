@@ -77,6 +77,9 @@ var PLATFORM_SPEED = 3;
 
 var INIT_X = game.canvas.width;
 var INIT_Y = game.canvas.height - PLATFORM_HEIGHT;
+var MIN_PLAT_Y = 160;
+var MAX_PLAT_Y = 180;
+
 //var PLAYER_IMG = "imgs/download.png"
 
 var NUM_PLATFORMS = 1;
@@ -158,7 +161,7 @@ function startGame() {
 // generates a new Platform
 function makeNewPlatform (height) {
     // x, y, height, width, color
-	var height = rand(MIN_PLAT_HEIGHT, MAX_PLAT_HEIGHT);
+	var height = rand(MIN_PLAT_Y, MAX_PLAT_Y);
     return new Platform(INIT_X, height, PLATFORM_HEIGHT, PLATFORM_WIDTH, "green");
 };
 
