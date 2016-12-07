@@ -182,8 +182,9 @@ function Player(width, height, color, x, y) {
     // Draw the player to screen
     this.update = function() {
         ctx = game.context;
-        ctx.drawImage(playerImg, this.x, this.y, this.width, this.height)
-        //ctx.fillRect(this.x, this.y, this.width, this.height);
+		ctx.fillStyle = color;
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+		ctx.drawImage(playerImg, this.x, this.y, this.width, this.height);
     }
     
     // Repositions the player for this frame
@@ -192,7 +193,7 @@ function Player(width, height, color, x, y) {
         // Speed without pressing keys
         this.speedX = 0;
         this.speedY = 0;
-
+		
         // Check if jump button is pressed
         if (kbd.up && this.landed) {
             this.jumping = true;
@@ -223,13 +224,28 @@ function Player(width, height, color, x, y) {
 		this.landed = false;
         
 		for (var i = 0; i < platforms.length; i++) {
+			var platform = platforms[i];
 			// check for platform contact
 			if (this.x >= platforms[i].x - this.width
 				&& this.x <= platforms[i].x + platforms[i].width
 				&& this.y >= platforms[i].y - this.height
 				&& this.y <= platforms[i].y) {
-				this.y = platforms[i].y - this.height;
-				this.landed = true;
+				
+				if (this.y + this.height <= platform.y + platform.height) {
+					this.y = platforms[i].y - this.height;
+					this.landed = true;
+				}
+				
+				else if (this.x + this.width <= platform.x + PLATFORM_SPEED) {
+					this.jumping = false;
+					this.x = platform.x - this.width;
+				}
+				
+				else {
+					this.jumping = false;
+					this.y = platform.y + platform.height;
+				}
+				
 			}			
 		}
         
