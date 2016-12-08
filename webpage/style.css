@@ -3,6 +3,10 @@ body {
   background-size: fill;
 }
 
+#topinfo {
+  text-align: center;
+}
+
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
   width: 70%;
