@@ -1,3 +1,19 @@
+/*
+font-family: 'Acme', sans-serif;
+font-family: 'Oswald', sans-serif;
+font-family: 'Lato', sans-serif;
+font-family: 'Open Sans Condensed', sans-serif;
+font-family: 'Reem Kufi', sans-serif;
+font-family: 'Josefin Sans', sans-serif;
+font-family: 'Gloria Hallelujah', cursive;
+font-family: 'Dekko', cursive;
+font-family: 'Amatic SC', cursive;
+font-family: 'Shadows Into Light', cursive;
+font-family: 'Acme', sans-serif;
+font-family: 'Hammersmith One', sans-serif;
+font-family: 'Cinzel', serif;
+*/
+
 body {
   background-image: url('http://zellox.com/wp-content/uploads/2016/04/website-background-images-%E2%80%AB309218135%E2%80%AC-%E2%80%AB%E2%80%AC.jpg');
   background-size: fill;
@@ -5,6 +21,15 @@ body {
 
 #topinfo {
   text-align: center;
+}
+
+#careerinfo {
+  width: cover;
+  padding: 20px;
+  /*border: 1px solid gray;*/
+  margin: 0;
+  font-family: Gloria Hallelujah;
+  font-size: 40px;
 }
 
 .carousel-inner > .item > img,
