@@ -36,6 +36,7 @@ var game = {
 // Keyboard handler
 var kbd = function () {
   this.up = false;
+  this.p = true;
 };
 
 // add keyevent listener to track arrow key actions
@@ -50,13 +51,13 @@ document.addEventListener("keydown", function (e) {
     kbd.left = true;
   }
   else if (e.keyCode === 80) {
-       paused = !paused;
+    kbd.p = true;
   }
 }, false);
 
 document.addEventListener("keyup", function (e) {
   if (e) {
-    kbd.up = kbd.left = kbd.right = false;
+    kbd.up = kbd.left = kbd.right = kbd.p = false;
   }
 }, false);
 
@@ -90,8 +91,6 @@ var NUM_PLATFORMS = 1;
 var player;
 var platforms = [];
 var count;
-
-var paused = true;
 
 // load images
 var playerImg = new Image();
@@ -150,6 +149,9 @@ var Platform = function (x, y, height, width, color) {
 // initializes a new game
 function startGame() {
 	
+    // pause the game
+    kbd.p = true;
+    
 	// TO-DO: Create constants for number values
 	platforms = [new Platform(100, 220, PLATFORM_HEIGHT + 5, PLATFORM_WIDTH * 3, "brown")];
 	
@@ -273,22 +275,22 @@ function updateGameArea() {
     game.clear();
 	
 	// Refactor using functions
-	/*if (paused) {
-		console.log("Hey");
-		paused = false;
+	if (kbd.p) {
+		console.log("Paused");
+		kbd.p = false;
 		
 		clearInterval(game.interval);
 		
 		// wait for pause button to be pressed again
-		setInterval (function() {
-			if (kbd.up) {
-				kbd.up = false;
-				clearInterval(this);
+		var w = setInterval (function() {
+			if (kbd.up || kbd.p) {
+				kbd.up = kbd.p = false;
+				clearInterval(w);
 				game.interval = setInterval (updateGameArea, 20);
 				console.log("Unpaused");
 			}
 		}, 20);
-	}*/
+	}
     
     // Handle collision detection
     //player.collisionDetect();
@@ -312,3 +314,7 @@ function updateGameArea() {
 function rand(lo, hi) {
     return Math.floor(Math.random() * (hi - lo)) + lo;
 }
+
+
+// was running into problems with body onload, so I added this:   -greg
+startGame();
