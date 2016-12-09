@@ -273,14 +273,14 @@ function updateGameArea() {
     game.clear();
 	
 	// Refactor using functions
-	if (paused) {
+	/*if (paused) {
 		console.log("Hey");
 		paused = false;
 		
 		clearInterval(game.interval);
 		
 		// wait for pause button to be pressed again
-		/*setInterval (function() {
+		setInterval (function() {
 			if (kbd.up) {
 				kbd.up = false;
 				clearInterval(this);
