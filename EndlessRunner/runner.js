@@ -287,8 +287,8 @@ function updateGameArea() {
 				game.interval = setInterval (updateGameArea, 20);
 				console.log("Unpaused");
 			}
-		}, 20);*/
-	}
+		}, 20);
+	}*/
     
     // Handle collision detection
     //player.collisionDetect();
