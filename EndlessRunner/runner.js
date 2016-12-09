@@ -76,10 +76,11 @@ var PLATFORM_WIDTH = 100;
 
 var PLATFORM_SPEED = 3;
 
+// Initialization X and Y coordinates
 var INIT_X = game.canvas.width;
 var INIT_Y = game.canvas.height - PLATFORM_HEIGHT;
 var MIN_PLAT_Y = 160;
-var MAX_PLAT_Y = 180;
+var MAX_PLAT_Y = 220;
 
 //var PLAYER_IMG = "imgs/download.png"
 
@@ -119,15 +120,12 @@ var Platform = function (x, y, height, width, color) {
                 
                 // Remove this object from platforms array
                 platforms.splice(index, 1);
-                
-                // Push (add) a new platform to the bldgs array
-                platforms.push(makeNewPlatform());
             }
         }
 		
 		// Check if platform crossed middle of screen
-		else if (this.x + this.width <= game.canvas.width / 2 &&
-				this.x + this.width >= game.canvas.width / 2 - 2 &&
+		else if (this.x + this.width <= game.canvas.width / 1.25 &&
+				this.x + this.width >= game.canvas.width / 1.25 - 2 &&
 				platforms.length <= 2) {
 			// Push (add) a new platform to the bldgs array
                  this.x += this.dx;
@@ -150,13 +148,12 @@ var Platform = function (x, y, height, width, color) {
 // initializes a new game
 function startGame() {
 	
+	// TO-DO: Create constants for number values
+	platforms = [new Platform(100, 240, PLATFORM_HEIGHT + 5, PLATFORM_WIDTH * 3, "brown")];
+	
     // width, height, color, x, y
+	// TO-DO: Create constants for number values
     player = new Player(30, 30, "red", 50, 120);
-    
-	// Populate platforms array
-    for (var i = 0; i < NUM_PLATFORMS; i++) {
-		platforms.push(makeNewPlatform());
-	}
 }
 
 // generates a new Platform
@@ -175,7 +172,7 @@ function Player(width, height, color, x, y) {
     this.height = height;
     //this.speedX = 0;
     this.speedY = 0;
-    this.gravity = 7;
+    this.gravity = 5;
     this.x = x;
     this.y = y;
     
@@ -206,7 +203,7 @@ function Player(width, height, color, x, y) {
         }
         
         // reset jump if we're at top of jump
-        if (this.jumpCounter === 5) {
+        if (this.jumpCounter === 7) {
             this.jumping = false;
             this.jumpCounter = 0;
         }
@@ -236,7 +233,13 @@ function Player(width, height, color, x, y) {
 					this.landed = true;
 				}
 				
+				// Platform pushes player
 				else if (this.x + this.width <= platform.x + PLATFORM_SPEED) {
+					// Reset game
+					if (this.x <= 0) {
+						startGame();
+					}
+					
 					this.jumping = false;
 					this.x = platform.x - this.width;
 				}
@@ -252,7 +255,7 @@ function Player(width, height, color, x, y) {
         // check for colliding with bottom of screen
         if (this.y >= game.canvas.height - this.height) {
             this.y = game.canvas.height - this.height;
-            this.landed = true;
+            startGame();
         }
         
         /*else {
