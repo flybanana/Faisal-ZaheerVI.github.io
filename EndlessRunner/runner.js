@@ -280,14 +280,14 @@ function updateGameArea() {
 		clearInterval(game.interval);
 		
 		// wait for pause button to be pressed again
-		setInterval (function() {
+		/*setInterval (function() {
 			if (kbd.up) {
 				kbd.up = false;
 				clearInterval(this);
 				game.interval = setInterval (updateGameArea, 20);
 				console.log("Unpaused");
 			}
-		}, 20);
+		}, 20);*/
 	}
     
     // Handle collision detection
