@@ -31,7 +31,7 @@ var game = {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 		this.context.drawImage(bgImage, 0, 0, this.canvas.width, this.canvas.height)
     }
-}; // end Game object
+}; // End Game object
 
 // Keyboard handler
 var kbd = function () {
@@ -49,7 +49,7 @@ document.addEventListener("keydown", function (e) {
   else if (e.keyCode === 37 || e.keyCode === 65) {
     kbd.left = true;
   }
-  else if (e.keyCode === 27) {
+  else if (e.keyCode === 80) {
        paused = !paused;
   }
 }, false);
@@ -90,6 +90,8 @@ var NUM_PLATFORMS = 1;
 var player;
 var platforms = [];
 var count;
+
+var paused = true;
 
 // load images
 var playerImg = new Image();
@@ -149,7 +151,7 @@ var Platform = function (x, y, height, width, color) {
 function startGame() {
 	
 	// TO-DO: Create constants for number values
-	platforms = [new Platform(100, 240, PLATFORM_HEIGHT + 5, PLATFORM_WIDTH * 3, "brown")];
+	platforms = [new Platform(100, 220, PLATFORM_HEIGHT + 5, PLATFORM_WIDTH * 3, "brown")];
 	
     // width, height, color, x, y
 	// TO-DO: Create constants for number values
@@ -269,6 +271,24 @@ function updateGameArea() {
 
     // Clears screen of previous frames
     game.clear();
+	
+	// Refactor using functions
+	if (paused) {
+		console.log("Hey");
+		paused = false;
+		
+		clearInterval(game.interval);
+		
+		// wait for pause button to be pressed again
+		setInterval (function() {
+			if (kbd.up) {
+				kbd.up = false;
+				clearInterval(this);
+				game.interval = setInterval (updateGameArea, 20);
+				console.log("Unpaused");
+			}
+		}, 20);
+	}
     
     // Handle collision detection
     //player.collisionDetect();
