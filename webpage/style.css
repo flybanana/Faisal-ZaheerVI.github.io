@@ -23,6 +23,12 @@ body {
   text-align: center;
 }
 
+#statement {
+  font-family: open sans condensed;
+  text-align: center;
+  font-size: 20px;
+}
+
 #careerinfo {
   width: cover;
   padding: 20px;
