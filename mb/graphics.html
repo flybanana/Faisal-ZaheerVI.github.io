@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <style>
+            canvas {
+                background-color: black;
+            };
+        </style>
+    </head>
+    <body>
+        <canvas id="myCanvas" height="500" width="500"></canvas>
+        
+        <script>
+        
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext();
+            
+            // create some constants
+            var INIT_X = canvas.width / 2;
+            var INIT_Y = canvas.height / 2;
+            
+            // called multiple times a second
+            var update function () {
+                
+                drawThingie();
+                
+            };
+            
+            var drawThingie() {
+                ctx.beginPath();
+                ctx.fill();
+                ctx.endPath();
+            };
+            
+        </script>
+        
+    </body>
+</html>
