@@ -1,4 +1,9 @@
 # EndlessRunner
+Recently added:<br>
+-Added simple visual Pause screen (will add on and update)<br>
+-Added new simple background (will update)<br>
+-Raised kill boundary to when Player touches ocean/water<br>
+
 To do list:<br>
 FUNCTIONS<br>
 -multiple platform spawning<br>
