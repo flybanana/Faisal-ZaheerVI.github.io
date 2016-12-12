@@ -285,6 +285,8 @@ function updateGameArea() {
 		game.context.fillText("Game Paused", game.canvas.width / 2, game.canvas.height / 2);
 		game.context.font = "20px Comic Sans MS";
 		game.context.fillText("Press P to continue", game.canvas.width / 2, game.canvas.height / 2 + 30);
+		game.context.font = "15px Comic Sans MS";
+		game.context.fillText("(In development)", game.canvas.width / 2, game.canvas.height / 2 + 60);
 		game.context.globalAlpha = 0.5;
 		game.context.fillStyle = "#004487";
 		game.context.fillRect(0,0,480,270);
