@@ -1,0 +1,105 @@
+/*
+font-family: 'Acme', sans-serif;
+font-family: 'Oswald', sans-serif;
+font-family: 'Lato', sans-serif;
+font-family: 'Open Sans Condensed', sans-serif;
+font-family: 'Reem Kufi', sans-serif;
+font-family: 'Josefin Sans', sans-serif;
+font-family: 'Gloria Hallelujah', cursive;
+font-family: 'Dekko', cursive;
+font-family: 'Amatic SC', cursive;
+font-family: 'Shadows Into Light', cursive;
+font-family: 'Acme', sans-serif;
+font-family: 'Hammersmith One', sans-serif;
+font-family: 'Cinzel', serif;
+*/
+
+body {
+  background-image: url('http://zellox.com/wp-content/uploads/2016/04/website-background-images-%E2%80%AB309218135%E2%80%AC-%E2%80%AB%E2%80%AC.jpg');
+  background-size: fill;
+}
+
+#topinfo {
+  text-align: center;
+}
+
+#statement {
+  font-family: open sans condensed;
+  text-align: center;
+  font-size: 20px;
+}
+
+#careerinfo {
+  width: cover;
+  padding: 20px;
+  /*border: 1px solid gray;*/
+  margin: 0;
+  font-family: Gloria Hallelujah;
+  font-size: 40px;
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  width: 70%;
+  margin: auto;
+}
+
+#title {
+  color: black;
+  font-family: font-family: 'Acme', sans-serif;
+  font-size: 50px;
+  text-align: center;
+  font-weight: bold;
+  font-variant-caps:small-caps
+}
+
+#green {
+  color: green;
+  font-size: 100px;
+  text-align: center;
+}
+
+.bodytext { 
+  /*border: 1px solid black; */
+  padding: 20px;
+  /* margin-left: 60px; */
+  /* background-color: #cccccc;
+  width: 50%;  */
+}
+
+.bold {
+  font-weight: 900;
+}
+
+h2 {
+  /* font...  */
+}
+
+.secgap {
+  margin-top: 10px;
+}
+
+.sectitle {
+  font-family: Verdana;
+  font-size: 250%;
+  font-weight: 900;
+  text-align: center;
+}
+
+.subsec {
+  font-size: 130%;
+  font-family: Arial;
+  font-weight: 500;
+  padding-left: 25px;
+}
+
+.subtext {
+  padding-left: 25px;
+}
+
+.image {
+  display: block;
+  margin: auto;
+  border-style: double;
+  border-width: 5px;
+}
