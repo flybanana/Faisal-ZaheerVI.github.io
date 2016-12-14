@@ -99,6 +99,8 @@ platformImg.src = "imgs/platform1.png";
 var platform2Img = new Image();
 platformImg.src = "imgs/platform2.png";
 
+var numScore = 0;
+
 // Platform class
 var Platform = function (x, y, height, width, color) {   
     this.x = x;
@@ -160,6 +162,8 @@ function startGame() {
     // width, height, color, x, y
 	// TO-DO: Create constants for number values
     player = new Player(30, 30, "red", 50, 120);
+	
+	drawScore();
 }
 
 // generates a new Platform
@@ -236,6 +240,7 @@ function Player(width, height, color, x, y) {
 				if (this.y + this.height <= platform.y + platform.height) {
 					this.y = platforms[i].y - this.height;
 					this.landed = true;
+					numScore++;
 				}
 				
 				// Platform pushes player
@@ -315,11 +320,23 @@ function updateGameArea() {
 	for (var i = 0; i < platforms.length; i++) {
 		platforms[i].update();
 	}
+	
+	drawScore();
 }
 
 // Generates a random integer between two bounds
 function rand(lo, hi) {
     return Math.floor(Math.random() * (hi - lo)) + lo;
+}
+
+function drawScore () {
+	game.context.fillStyle = "black";
+	game.context.globalAlpha = 1;
+	game.context.fillText("Score : " + numScore, game.canvas.width - 110, game.canvas.height - 250);
+	
+	game.context.fillStyle = "black";
+	game.context.globalAlpha = 1;
+	game.context.fillText("High Score : ", game.canvas.width - 96, game.canvas.height - 230);
 }
 
 // was running into problems with body onload, so I added this:   -greg
