@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        
+        <title>Number Guessing Game</title>
+        
+        <script>
+            
+            //Set minimum and Maximum for the guess
+            //var MIN_GUESS = 1;
+            var MAX_GUESS = 10;
+            
+            //Creates a computer guess
+            var computerGuess = Math.floor(Math.random() * MAX_GUESS) + 1;
+            
+            //Get user's guest and store in variable
+            var guess = prompt("Guess a number between 1 and " + MAX_GUESS);
+            
+            //Output Correct/Incorrect guess response
+            if(computerGuess === guess) {
+                console.log("<h1>Correct! You guessed the number!<h1>");
+            }
+            
+            else {
+                console.log("<h1>Incorrect! Guess again!<h1>");
+            }
+            
+            //Output the guess
+            document.write("<h1>You guessed: " + guess);
+            
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>
